@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+  </head>
+  <body>
+    <p>D4 <input type="text" class="dice" id="d4" size="3" maxlength="3"></p>
+    <p>D6 <input type="text" class="dice" id="d6" size="3" maxlength="3"></p>
+    <p>D8 <input type="text" class="dice" id="d8" size="3" maxlength="3"></p>
+    <p>D10 <input type="text" class="dice" id="d10" size="3" maxlength="3"></p>
+    <p>D12 <input type="text" class="dice" id="d12" size="3" maxlength="3"></p>
+    <p>D20 <input type="text" class="dice" id="d20" size="3" maxlength="3"></p>
+    <p>D100 <input type="text" class="dice" id="d100" size="3" maxlength="3"></p>
+    <p>Custom Die Value:<input type="text" size="3" id="cus" maxlength="3"> Number of die:<input type="text" size="3" maxlength="3"></p>
+    <button onclick="RollDice()">Roll</button>
+    
+    <div id="d4results"> </div>
+    <div id="d6results"> </div>
+    <div id="d8results"> </div>
+    <div id="d10results"> </div>
+    <div id="d12results"> </div>
+    <div id="d20results"> </div>
+    <div id="d100results"> </div>
+    <div id="customresults"> </div>
+    
+    <script>
+    //inclusive
+    function rand(min, max){
+      return (Math.floor(Math.random()*(max - min + 1)) + min);
+    }
+    
+    function getSum(total, nums){
+      return total + nums;
+    }
+    
+    function roll(id, name, min, max){
+      var individual = [];
+      var total;
+      var output = "The rolls for " + name + " are: ";
+      var rolls = document.getElementById(id).value;
+      for(i=0; i<rolls; i++){
+        var value = rand(min, max);
+        output += value + " ";
+      }
+      return output;
+    }
+    
+    function RollDice(){
+      document.getElementById("d4results").innerHTML = roll("d4", "D4", 1, 4);
+      document.getElementById("d6results").innerHTML = roll("d6", "D6", 1, 6);
+      document.getElementById("d8results").innerHTML = roll("d8", "D8", 1, 8);
+      document.getElementById("d10results").innerHTML = roll("d10", "D10", 1, 10);
+      document.getElementById("d12results").innerHTML = roll("d12", "D12", 1, 12);
+      document.getElementById("d20results").innerHTML = roll("d20", "D20", 1, 20);
+      document.getElementById("d100results").innerHTML = roll("d100", "D100", 1, 100);
+      document.getElementById("customresults").innerHTML = roll("cus", ("D"+document.getElementById("customresults").value), 1, document.getElementById("customresults").value)
+
+    }
+    </script>
+  </body>
+  
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /*canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }*/
+      .wrapper {
+        position: relative;
+        width: 800;
+        height: 800;
+      }
+
+      .wrapper canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <canvas id="background" width="800" height="800"></canvas>
+      <canvas id="drops" width="800" height="800"> </canvas>
+    </div>
+
+    <script>
+      var purpleColor = "#b604b9";
+      var orangeColor = "#e92b1c";
+      var canvasBackground = document.getElementById('background');
+      var height = canvasBackground.height;
+      var width = canvasBackground.width;
+      var ctx = canvasBackground.getContext('2d');
+      var grd = ctx.createLinearGradient(0,0,0,height);
+
+      grd.addColorStop(0,purpleColor);
+      grd.addColorStop(1,orangeColor);
+      ctx.fillStyle = grd;
+      ctx.fillRect(0,0,width,height);
+
+
+      var dropColor = "#0b11d9";
+      var canvasDrops = document.getElementById('drops');
+      var ctx2 = canvasDrops.getContext('2d');
+
+      ctx2.beginPath();
+      ctx2.moveTo(10,10);
+      ctx2.lineTo(10,300);
+      ctx2.strokeStyle = dropColor
+      ctx2.stroke();
+      
+
+      //clearing the canvas
+      function clear(){
+        context.beginPath();
+        context.clearRect(0,0,width,canvas)
+      }
+    </script>
+  </body>
+</html>
